@@ -2,4 +2,8 @@
 
 <%= @memo.field("content") %>
 
-<p><a href="/">一覧に戻る</a> | 編集 | 削除</div></p>
+<p><a href="/">一覧に戻る</a> | 編集 | 
+<form method="post" action="/memo/<%= @memo.field("id") %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="削除">
+</form></p>

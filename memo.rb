@@ -6,6 +6,8 @@ require "securerandom"
 require "erb"
 require "csv"
 
+enable :method_override
+
 get "/" do
   @memo_data = CSV.read("files/memo.csv", headers: true)
   erb :index
@@ -36,5 +38,18 @@ end
 patch "/edit" do
 end
 
-delete "/delete" do
+delete "/memo/:id" do
+  id = params[:id]
+  csv_table = CSV.table("files/memo.csv", headers: true)
+  csv_table.by_row!
+  csv_table.delete_if { |row| row.field?(id) }
+  csv_table.to_a
+  CSV.open("files/memo.csv", "w", headers: true) do |csv|
+    csv_table.each do |row|
+      csv.puts row
+    end
+  end
+
+  redirect "/"
+  erb :index
 end
