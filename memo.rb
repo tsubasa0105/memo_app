@@ -47,7 +47,25 @@ end
 
 patch "/edit_memo/:id" do
   id = params[:id]
-  p params
+  csv_table = CSV.table("files/memo.csv", headers: true)
+  csv_table.each do |row|
+    if row[:id] == id
+      row[:title] = params[:title]
+      row[:content] = params[:content]
+    end
+  end
+  
+  header = %w(id title content)
+  CSV.open("files/memo.csv", "w") do |csv|
+    csv << header
+    csv_table.each do |row|
+      p row
+      csv.puts row
+    end
+  end
+
+  redirect "/"
+  erb :index
 end
 
 delete "/memo/:id" do
@@ -56,7 +74,7 @@ delete "/memo/:id" do
   csv_table.by_row!
   csv_table.delete_if { |row| row.field?(id) }
   header = %w(id title content)
-  CSV.open("files/memo.csv", "w", headers: true) do |csv|
+  CSV.open("files/memo.csv", "w") do |csv|
     csv << header
     csv_table.each do |row|
       p row
