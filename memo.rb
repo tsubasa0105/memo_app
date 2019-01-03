@@ -35,7 +35,19 @@ get "/show/:id" do
   erb :show
 end
 
-patch "/edit" do
+get "/edit/:id" do
+  id = params[:id]
+  CSV.read("files/memo.csv", headers: true).each do |row|
+    if row.field("id") == id
+      @memo = row
+    end
+  end
+  erb :edit
+end
+
+patch "/edit_memo/:id" do
+  id = params[:id]
+  p params
 end
 
 delete "/memo/:id" do
@@ -43,9 +55,11 @@ delete "/memo/:id" do
   csv_table = CSV.table("files/memo.csv", headers: true)
   csv_table.by_row!
   csv_table.delete_if { |row| row.field?(id) }
-  csv_table.to_a
+  header = %w(id title content)
   CSV.open("files/memo.csv", "w", headers: true) do |csv|
+    csv << header
     csv_table.each do |row|
+      p row
       csv.puts row
     end
   end
