@@ -17,7 +17,7 @@ def parse_memo_related_with_id
   end
 end
 
-def recreate_csv_file
+def recreate_csv_file(csv_table)
   header = %w(id title content)
   CSV.open("files/memo.csv", "w") do |csv|
     csv << header
@@ -64,6 +64,7 @@ patch "/edit_memo/:id" do
     end
   end
 
+  recreate_csv_file(csv_table)
   redirect "/"
   erb :index
 end
@@ -74,6 +75,7 @@ delete "/memo/:id" do
   csv_table.by_row!
   csv_table.delete_if { |row| row.field?(id) }
 
+  recreate_csv_file(csv_table)
   redirect "/"
   erb :index
 end
