@@ -8,6 +8,25 @@ require "csv"
 
 enable :method_override
 
+def parse_memo_related_with_id
+  id = params[:id]
+  CSV.read("files/memo.csv", headers: true).each do |row|
+    if row.field("id") == id
+      @memo = row
+    end
+  end
+end
+
+def recreate_csv_file
+  header = %w(id title content)
+  CSV.open("files/memo.csv", "w") do |csv|
+    csv << header
+    csv_table.each do |row|
+      csv.puts row
+    end
+  end
+end
+
 get "/" do
   @memo_data = CSV.read("files/memo.csv", headers: true)
   erb :index
@@ -26,22 +45,12 @@ post "/new" do
 end
 
 get "/show/:id" do
-  id = params[:id]
-  CSV.read("files/memo.csv", headers: true).each do |row|
-    if row.field("id") == id
-      @memo = row
-    end
-  end
+  parse_memo_related_with_id
   erb :show
 end
 
 get "/edit/:id" do
-  id = params[:id]
-  CSV.read("files/memo.csv", headers: true).each do |row|
-    if row.field("id") == id
-      @memo = row
-    end
-  end
+  parse_memo_related_with_id
   erb :edit
 end
 
@@ -54,15 +63,6 @@ patch "/edit_memo/:id" do
       row[:content] = params[:content]
     end
   end
-  
-  header = %w(id title content)
-  CSV.open("files/memo.csv", "w") do |csv|
-    csv << header
-    csv_table.each do |row|
-      p row
-      csv.puts row
-    end
-  end
 
   redirect "/"
   erb :index
@@ -73,14 +73,6 @@ delete "/memo/:id" do
   csv_table = CSV.table("files/memo.csv", headers: true)
   csv_table.by_row!
   csv_table.delete_if { |row| row.field?(id) }
-  header = %w(id title content)
-  CSV.open("files/memo.csv", "w") do |csv|
-    csv << header
-    csv_table.each do |row|
-      p row
-      csv.puts row
-    end
-  end
 
   redirect "/"
   erb :index

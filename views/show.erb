@@ -1,9 +1,22 @@
-<p>タイトル　：<%= @memo.field("title") %></p>
+<h1>メモの表示</h1>
 
-<%= @memo.field("content") %>
+<div>
+  <p>タイトル　：<%= @memo.field("title") %></p>
+  <p><%= @memo.field("content") %></p>
+</div>
 
-<p><a href="/">一覧に戻る</a> | 編集 | 
-<form method="post" action="/memo/<%= @memo.field("id") %>">
+<div>
+  <div>
+    <a href="/">一覧に戻る</a>
+  </div>
+
+  <div>
+    <a href="/edit/<%= @memo.field("id") %>">編集</a>
+  </div>
+
+  <form method="post" action="/memo/<%= @memo.field("id") %>">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="削除">
-</form></p>
+  </form>
+
+</div>

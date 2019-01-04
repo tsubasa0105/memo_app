@@ -4,12 +4,12 @@
 </form>
 
 <ul>
-        <% @memo_data.each do |data| %>
-        <li data-id= "<%= data[0] %>">
-            <a href="/show/<%= data[0] %>">
-            <%= data[1] %>
-            </a>
-        </li>
-        <% end %>
+    <% @memo_data.each do |data| %>
+    <li data-id= "<%= data[0] %>">
+        <a href="/show/<%= data[0] %>">
+        <%= data[1] %>
+        </a>
+    </li>
+    <% end %>
 </ul>
-<ul>
+
