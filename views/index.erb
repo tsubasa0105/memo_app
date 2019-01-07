@@ -1,15 +1,19 @@
 <h1>メモアプリ</h1>
+
+<div class="memo-title">
+    <ul>
+        <% @memo_data.each do |data| %>
+        <li data-id= "<%= data[0] %>">
+            <a href="/show/<%= data[0] %>">
+            <%= data[1] %>
+            </a>
+        </li>
+        <% end %>
+    </ul>
+</div>
+
 <form action="/new" method="get">
-    <input type="submit" value="新規作成">
+    <input type="submit" value="新規作成" class="new-button">
 </form>
 
-<ul>
-    <% @memo_data.each do |data| %>
-    <li data-id= "<%= data[0] %>">
-        <a href="/show/<%= data[0] %>">
-        <%= data[1] %>
-        </a>
-    </li>
-    <% end %>
-</ul>
 

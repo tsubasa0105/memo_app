@@ -1,3 +1,107 @@
+/** * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/) * http://cssreset.com */html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {	margin: 0;	padding: 0;	border: 0;	font-size: 100%;	font: inherit;	vertical-align: baseline;}/* HTML5 display-role reset for older browsers */article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {	display: block;}body {	line-height: 1;}ol, ul {	list-style: none;}blockquote, q {	quotes: none;}blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}table {	border-collapse: collapse;	border-spacing: 0;}
+
+body {
+  background-color: #FFAD90;
+}
+
 h1 {
-  color: green;
+  font-size: 50px;
+  margin: 50px auto;
+  text-align: center;
+  border-bottom: double 5px #FF9872;
+  color: #660000;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #660000;
+}
+
+input {
+  width: 500px;
+  height: 40px;
+  background-color: #FFDBC9;
+  margin: 20px auto;
+}
+
+textarea {
+  width: 650px;
+  height: 250px;
+  background-color: #FFDBC9;
+  margin: 20px auto;
+}
+
+form {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  text-align: center;
+  margin: 25px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.memo-title {
+  width: 600px;
+  margin: 20px auto;
+  padding: 50px;
+  height: 300px;
+  border: double #660000;
+  list-style-type: none;
+  background-color: #FFDBC9;
+}
+
+.new-button {
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.bottom-button {
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+
+}
+
+.title {
+  width: 600px;
+  margin: 20px auto;
+  border: solid #660000;
+  height: 5px;
+  padding: 20px;
+  list-style: none;
+  background-color: #FFDBC9;
+}
+
+.body {
+  width: 600px;
+  margin: 10px auto;
+  border: solid #660000;
+  padding: 50px;
+  background-color: #FFDBC9;
+  min-height: 250px;
+  line-height: 30px;
+}
+
+.option-button {
+  margin: auto;
+  text-align: center;
+}
+
+.option-button input {
+  height: 40px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.option-button .button {
+  display: inline-block;
+  margin: 0 30px
 }

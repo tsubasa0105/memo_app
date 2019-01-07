@@ -1,12 +1,11 @@
 <h1><%= @memo.field("title")%>の編集</h1>
+
 <form action="/edit_memo/<%= @memo.field("id") %>" method="post" >
-    <label for="title">タイトル</label><br>
+    <h2>タイトル</label></h2>
     <input type="test" name="title" value="<%= @memo.field("title") %>">
-    <p></p>
-    <label for="content">本文</label><br>
+    <h2>本文</label></h2>
     <textarea name="content" cols="40" rows="10"><%= @memo.field("content") %></textarea>
-    <p></p>
     <input type="hidden" name="_method" value="PATCH">
-    <button type="submit">保存する</button>
-    <a href="/show/<%= @memo.field("id") %>">キャンセル</a>
+    <p><input type="submit" value="保存" class="new-button"></p>
+    <p><input type="button" class="new-button" value="キャンセル" onClick="location.href='/show/<%= @memo.field("id") %>'"></p>
 </form>

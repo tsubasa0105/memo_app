@@ -1,24 +1,34 @@
-<h1>メモの表示</h1>
+<h1>メモ内容</h1>
 
-<div>
-  <p>タイトル　：<%= @memo.field("title") %></p>
-  <p><% @memo.field("content").lines.each do |str| %></p>
-  <p><%= str %></p>
-  <% end %>
+<div class="memo">
+
+  <div class="title">
+    <h2>タイトル　：<%= @memo.field("title") %></h2>
+  </div>
+
+  <div class="body">
+    <% @memo.field("content").lines.each do |str| %>
+    <h2><%= str %></h2>
+    <% end %>
+  </div>
+
 </div>
 
-<div>
-  <div>
-    <a href="/">一覧に戻る</a>
-  </div>
+<div class="option-button">
 
-  <div>
-    <a href="/edit/<%= @memo.field("id") %>">編集</a>
-  </div>
+    <div class="button">
+      <input type="button" value="一覧に戻る" onClick="location.href='/'">
+    </div>
 
-  <form method="post" action="/memo/<%= @memo.field("id") %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="削除">
-  </form>
+    <div class="button">
+      <input type="button" value="編集" onClick="location.href='/edit/<%= @memo.field("id") %>'">
+    </div>
+
+    <div class="button">
+      <form method="post" action="/memo/<%= @memo.field("id") %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="削除">
+      </form>
+    </div>
 
 </div>

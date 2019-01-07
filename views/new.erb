@@ -1,11 +1,11 @@
 <h1>メモの新規作成</h1>
+
 <form action="/new" method="post">
         <input type="hidden" name="id" value="<%= SecureRandom.hex(10) %>">
-        <label for="title">タイトル</label>
+        <h2>タイトル</label></h2>
         <input type="text" name="title">
-        <p></p>
-        <label for="content">本文</label>
+        <h2>本文</label></h2>
         <textarea type="text" name="content" rows="10" clos="60"></textarea>
-        <button type="submit">保存</button>
-        <a href="/">キャンセル</a>
+        <p><input type="submit" value="保存" class="new-button"></p>
+        <p><input type="button" class="new-button" value="キャンセル" onClick="location.href='/'"></p>
 </form>
