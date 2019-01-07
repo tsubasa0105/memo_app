@@ -2,7 +2,9 @@
 
 <div>
   <p>タイトル　：<%= @memo.field("title") %></p>
-  <p><%= @memo.field("content") %></p>
+  <p><% @memo.field("content").lines.each do |str| %></p>
+  <p><%= str %></p>
+  <% end %>
 </div>
 
 <div>
