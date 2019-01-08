@@ -6,7 +6,6 @@ require "securerandom"
 require "erb"
 require "csv"
 
-enable :method_override
 
 def parse_memo_related_with_id
   id = params[:id]
