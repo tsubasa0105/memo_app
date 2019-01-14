@@ -6,7 +6,6 @@ require "securerandom"
 require "erb"
 require "csv"
 
-
 def parse_memo_related_with_id
   id = params[:id]
   CSV.read("files/memo.csv", headers: true).each do |row|
