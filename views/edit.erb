@@ -7,5 +7,5 @@
     <textarea name="content" cols="40" rows="10"><%= @memo.field("content") %></textarea>
     <input type="hidden" name="_method" value="PATCH">
     <p><input type="submit" value="保存" class="new-button"></p>
-    <p><input type="button" class="new-button" value="キャンセル" onClick="location.href='/show/<%= @memo.field("id") %>'"></p>
+    <p><input type="button" class="new-button" value="キャンセル" onClick="location.href='/<%= @memo.field("id") %>'"></p>
 </form>

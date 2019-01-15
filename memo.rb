@@ -42,7 +42,7 @@ post "/new" do
   redirect "/"
 end
 
-get "/show/:id" do
+get "/:id" do
   parse_memo_related_with_id
   erb :show
 end
